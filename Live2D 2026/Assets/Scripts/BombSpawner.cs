@@ -9,8 +9,9 @@ public class BombSpawner : MonoBehaviour
     [Header("Bombs")]
     public BombSpawnData[] bombs;
 
-    [Header("Spawn Points")]
-    public Transform spawnPoint;
+    [Header("Spawn Area")]
+    public Vector2 minSpawnPosition;
+    public Vector2 maxSpawnPosition;
 
     private float gameTimer;
 
@@ -46,8 +47,19 @@ public class BombSpawner : MonoBehaviour
             }
         }
 
-        // Screen is full
-        if (activeBombs.Count >= maxBombs)
+        // Count only bombs that haven't been defused yet
+        int activeUndefusedBombs = 0;
+
+        foreach (Bomb activeBomb in activeBombs)
+        {
+            if (activeBomb != null && !activeBomb.IsDefused)
+            {
+                activeUndefusedBombs++;
+            }
+        }
+
+        // Screen is full of active (undefused) bombs
+        if (activeUndefusedBombs >= maxBombs)
             return;
 
         // Find every bomb that's ready to spawn
@@ -75,7 +87,13 @@ public class BombSpawner : MonoBehaviour
 
     void SpawnBomb(GameObject prefab)
     {
-        GameObject obj = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
+        Vector2 randomPos = new Vector2(
+            Random.Range(minSpawnPosition.x, maxSpawnPosition.x),
+            Random.Range(minSpawnPosition.y, maxSpawnPosition.y)
+        );
+
+        GameObject obj = Instantiate(prefab, randomPos, Quaternion.identity);
+
         Bomb bomb = obj.GetComponent<Bomb>();
 
         if (bomb != null)
@@ -85,5 +103,15 @@ public class BombSpawner : MonoBehaviour
     public void BombRemoved(Bomb bomb)
     {
         activeBombs.Remove(bomb);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+
+        Vector3 center = (minSpawnPosition + maxSpawnPosition) / 2f;
+        Vector3 size = maxSpawnPosition - minSpawnPosition;
+
+        Gizmos.DrawWireCube(center, size);
     }
 }
