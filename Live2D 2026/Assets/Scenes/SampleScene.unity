@@ -178,8 +178,7 @@ MonoBehaviour:
     spawnRate: 2
     unlockMinute: 150
     timer: 0
-  spawnPoints:
-  - {fileID: 447806984}
+  spawnPoint: {fileID: 447806984}
 --- !u!4 &447806984
 Transform:
   m_ObjectHideFlags: 0

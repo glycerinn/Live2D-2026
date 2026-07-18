@@ -10,7 +10,7 @@ public class BombSpawner : MonoBehaviour
     public BombSpawnData[] bombs;
 
     [Header("Spawn Points")]
-    public Transform[] spawnPoints;
+    public Transform spawnPoint;
 
     private float gameTimer;
 
@@ -31,35 +31,51 @@ public class BombSpawner : MonoBehaviour
             return;
 
         gameTimer += Time.deltaTime;
+
         activeBombs.RemoveAll(b => b == null);
+
+        // Max bombs on screen (1 -> 5)
         int maxBombs = Mathf.Clamp(Mathf.FloorToInt(gameTimer / 60f) + 1, 1, 5);
+
+        // Update timers for unlocked bombs
+        foreach (BombSpawnData bomb in bombs)
+        {
+            if (gameTimer >= bomb.unlockMinute)
+            {
+                bomb.timer += Time.deltaTime;
+            }
+        }
+
+        // Screen is full
+        if (activeBombs.Count >= maxBombs)
+            return;
+
+        // Find every bomb that's ready to spawn
+        List<BombSpawnData> readyBombs = new();
 
         foreach (BombSpawnData bomb in bombs)
         {
-            // Has this bomb unlocked yet?
             if (gameTimer < bomb.unlockMinute)
                 continue;
 
-            bomb.timer += Time.deltaTime;
-
-            // Wait until this bomb's own spawn timer finishes
-            if (bomb.timer < bomb.spawnRate)
-                continue;
-
-            bomb.timer = 0f;
-
-            // Don't exceed the max bombs on screen
-            if (activeBombs.Count >= maxBombs)
-                continue;
-
-            SpawnBomb(bomb.prefab);
+            if (bomb.timer >= bomb.spawnRate)
+                readyBombs.Add(bomb);
         }
+
+        // Nothing ready yet
+        if (readyBombs.Count == 0)
+            return;
+
+        // Pick one randomly
+        BombSpawnData chosen = readyBombs[Random.Range(0, readyBombs.Count)];
+        chosen.timer = 0f;
+
+        SpawnBomb(chosen.prefab);
     }
 
     void SpawnBomb(GameObject prefab)
     {
-        Transform point = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        GameObject obj = Instantiate(prefab, point.position, Quaternion.identity);
+        GameObject obj = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
         Bomb bomb = obj.GetComponent<Bomb>();
 
         if (bomb != null)
