@@ -532,16 +532,16 @@ MonoBehaviour:
     unlockMinute: 60
     timer: 0
   - prefab: {fileID: 2650149157332532394, guid: 7b0903ca2cefb0e4d8462b0f591af357, type: 3}
-    spawnRate: 2
+    spawnRate: 4
     unlockMinute: 180
     timer: 0
   - prefab: {fileID: 4291054202566466014, guid: 944f9d1d36dc7724284401ec6074ee8f, type: 3}
-    spawnRate: 2
+    spawnRate: 3
     unlockMinute: 120
     timer: 0
   - prefab: {fileID: 9209047108963517827, guid: fce5feada76ad5c4b9b50ab65732a7da, type: 3}
     spawnRate: 2
-    unlockMinute: 150
+    unlockMinute: 90
     timer: 0
   minSpawnPosition: {x: -8, y: 3}
   maxSpawnPosition: {x: 8, y: -3}
