@@ -31,11 +31,11 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= amount;
         currentHealth = Mathf.Max(currentHealth, 0);
-        audioManager.playHurtSFX();
         UpdateHealthUI();
 
         if (currentHealth <= 0)
         {
+            audioManager.playExplodeDeathSFX();
             Debug.Log("Player Died");
             GameOverUI.Instance.ShowResult(false);
         }

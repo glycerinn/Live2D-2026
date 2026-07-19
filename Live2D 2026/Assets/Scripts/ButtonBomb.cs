@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ButtonBomb : MonoBehaviour, IBombInteraction
 {
-    Bomb bomb;
+    private Bomb bomb;
 
     void Awake()
     {
@@ -11,13 +11,7 @@ public class ButtonBomb : MonoBehaviour, IBombInteraction
 
     public void Interact(Bomb bomb)
     {
-        // Player clicked it -> punish them
+        // Clicking it hurts the player.
         bomb.Explode(true);
-    }
-
-    public void TimerExpired()
-    {
-        // Timer finished -> harmless explosion
-        bomb.Explode(false);
     }
 }

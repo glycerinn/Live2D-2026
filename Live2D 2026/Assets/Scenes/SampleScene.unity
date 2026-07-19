@@ -539,7 +539,7 @@ MonoBehaviour:
     timer: 0
   - prefab: {fileID: 9209047108963517827, guid: fce5feada76ad5c4b9b50ab65732a7da, type: 3}
     spawnRate: 2
-    unlockMinute: 150
+    unlockMinute: 0
     timer: 0
   minSpawnPosition: {x: -8, y: 3}
   maxSpawnPosition: {x: 8, y: -3}
@@ -3378,13 +3378,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   BGM: {fileID: 1212418649}
   SFX: {fileID: 697066780}
-  MainMenuBGM: {fileID: 8300000, guid: 8d04db47413fd7b4087d7e26b498d97b, type: 3}
-  GameBGM: {fileID: 8300000, guid: 849c828ce8c3c6346a0184dd8f7ec160, type: 3}
-  GameOverBGM: {fileID: 8300000, guid: 967e2c7b211c1c44c814a94484f62b78, type: 3}
-  clicksfx: {fileID: 8300000, guid: ca131f95f6036a341b5a282e98cd10eb, type: 3}
-  hurtsfx: {fileID: 8300000, guid: bf243808925596a42bc1affb27a1c0fe, type: 3}
-  enemyshootsfx: {fileID: 8300000, guid: f96a96f91f68f5f4e96a6163d634b71f, type: 3}
-  enemydiesfx: {fileID: 8300000, guid: d474c94e42ec8814a966f7360766cbef, type: 3}
+  MainMenuBGM: {fileID: 8300000, guid: da05cfa888971604799fd84319416c1f, type: 3}
+  GameBGM: {fileID: 8300000, guid: a895e003f623a5d46ab847f6c317d017, type: 3}
+  GameOverBGM: {fileID: 8300000, guid: e1ddde6f5bb832a4491f89cfc20aa539, type: 3}
+  clicksfx: {fileID: 8300000, guid: 16345e8148f3bd44c8d17ede2fb33fda, type: 3}
+  popsfx: {fileID: 8300000, guid: edcbf754e491d9948b6085b871752107, type: 3}
+  explodedeathsfx: {fileID: 8300000, guid: fc00ace3daf8c8340a15c8a9881ba241, type: 3}
+  enemyexplodesfx: {fileID: 8300000, guid: 528d8f09ba0a06a4ea05d30f8578a8dc, type: 3}
+  trashsfx: {fileID: 8300000, guid: bfff5335dc8108740991263607b57757, type: 3}
 --- !u!4 &1984967871
 Transform:
   m_ObjectHideFlags: 0

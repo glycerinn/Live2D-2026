@@ -52,7 +52,7 @@ public class Trash : MonoBehaviour
 
     void Explode()
     {
-        audioManager.playEnemyDieSFX();
+        audioManager.playEnemyExplodeSFX();
         if (PlayerHealth.Instance != null)
         {
             PlayerHealth.Instance.TakeDamage(damage);

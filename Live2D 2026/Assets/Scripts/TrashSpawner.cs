@@ -42,7 +42,6 @@ public class TrashSpawner : MonoBehaviour
             return;
 
         GameObject prefab = trashPrefabs[Random.Range(0, trashPrefabs.Length)];
-
         Instantiate(prefab, spawnPoint.position, Quaternion.identity);
     }
 }

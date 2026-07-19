@@ -24,6 +24,8 @@ public class Bomb : MonoBehaviour
     private BombSpawner spawner;
     private AudioManager audioManager;
     private bool countdownPaused;
+    [Header("Timer")]
+    public bool damagePlayerOnTimeout = true;
 
     public void StopCountdown()
     {
@@ -68,9 +70,9 @@ public class Bomb : MonoBehaviour
 
         countdown -= Time.deltaTime;
 
-        if (countdown <= 0)
+       if (countdown <= 0)
         {
-            Explode();
+            Explode(damagePlayerOnTimeout);
         }
     }
 
@@ -98,6 +100,7 @@ public class Bomb : MonoBehaviour
     public void Defuse()
     {
         IsDefused = true;
+        audioManager.playpopSFX();
 
         // Change sprite
         if (spriteRenderer != null && defusedSprite != null)
@@ -134,7 +137,7 @@ public class Bomb : MonoBehaviour
         {
             PlayerHealth.Instance.TakeDamage(damage);
         }
-        audioManager.playEnemyDieSFX();
+        audioManager.playEnemyExplodeSFX();
         Destroy(gameObject);
     }
 }

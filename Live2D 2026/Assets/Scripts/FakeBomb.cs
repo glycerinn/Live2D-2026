@@ -10,9 +10,11 @@ public class FakeBomb : MonoBehaviour, IBombInteraction
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private bool activated;
+    private Bomb bomb;
 
     void Awake()
     {
+        bomb = GetComponent<Bomb>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
 
@@ -46,4 +48,6 @@ public class FakeBomb : MonoBehaviour, IBombInteraction
 
         Destroy(gameObject);
     }
+
+    
 }

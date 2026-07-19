@@ -203,6 +203,7 @@ MonoBehaviour:
   damage: 1
   healthBar: {fileID: 6871665207201476889}
   defusedSprite: {fileID: -3590657582257147982, guid: 59155980468676b4ab7717b9052bd0d0, type: 3}
+  damagePlayerOnTimeout: 0
 --- !u!114 &2851256104986136089
 MonoBehaviour:
   m_ObjectHideFlags: 0

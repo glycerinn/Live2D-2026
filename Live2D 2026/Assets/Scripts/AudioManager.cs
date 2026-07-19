@@ -9,9 +9,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip GameBGM;
     public AudioClip GameOverBGM;
     public AudioClip clicksfx;
-    public AudioClip hurtsfx;
-    public AudioClip enemyshootsfx;
-    public AudioClip enemydiesfx;
+    public AudioClip popsfx;
+    public AudioClip explodedeathsfx;
+    public AudioClip enemyexplodesfx;
+    public AudioClip trashsfx;
 
     public static AudioManager instance;
     private void Awake()
@@ -56,19 +57,24 @@ public class AudioManager : MonoBehaviour
         SFX.PlayOneShot(clicksfx);
     }
 
-    public void playHurtSFX()
+    public void playExplodeDeathSFX()
     {
-        SFX.PlayOneShot(hurtsfx);
+        SFX.PlayOneShot(explodedeathsfx);
+    }
+
+    public void playpopSFX()
+    {
+        SFX.PlayOneShot(popsfx);
     }
 
 
-    public void playEnemyShootSFX()
+    public void playEnemyExplodeSFX()
     {
-        SFX.PlayOneShot(enemyshootsfx);
+        SFX.PlayOneShot(enemyexplodesfx);
     }
 
-    public void playEnemyDieSFX()
+    public void playTrashSFX()
     {
-        SFX.PlayOneShot(enemydiesfx);
+        SFX.PlayOneShot(trashsfx);
     }
 }
