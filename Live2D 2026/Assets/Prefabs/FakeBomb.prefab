@@ -162,7 +162,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 4878899951112630115, guid: e2555196d3fdbeb4bb29f63650beeb2a, type: 3}
+  m_Sprite: {fileID: 8719588477279046589, guid: 93d676682b2bb024b8991076c75b0963, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FakeBomb
   fakeBombDamage: 99
-  activatedSprite: {fileID: 7248610925373270609, guid: e2555196d3fdbeb4bb29f63650beeb2a, type: 3}
+  activatedSprite: {fileID: 6944747807757484320, guid: 30fbee3da21e8184aa7d1620e3f2cc80, type: 3}
 --- !u!114 &4940447602759316059
 MonoBehaviour:
   m_ObjectHideFlags: 0

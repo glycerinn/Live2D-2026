@@ -22,9 +22,17 @@ public class Bomb : MonoBehaviour
 
     private IBombInteraction interaction;
     private BombSpawner spawner;
+    private AudioManager audioManager;
+    private bool countdownPaused;
+
+    public void StopCountdown()
+    {
+        countdownPaused = true;
+    }
 
     void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         CurrentHP = maxHP;
         interaction = GetComponent<IBombInteraction>();
 
@@ -55,7 +63,7 @@ public class Bomb : MonoBehaviour
 
     void Update()
     {
-        if (IsDefused)
+        if (IsDefused || countdownPaused)
             return;
 
         countdown -= Time.deltaTime;
@@ -90,7 +98,7 @@ public class Bomb : MonoBehaviour
     public void Defuse()
     {
         IsDefused = true;
-        
+
         // Change sprite
         if (spriteRenderer != null && defusedSprite != null)
             spriteRenderer.sprite = defusedSprite;
@@ -99,16 +107,34 @@ public class Bomb : MonoBehaviour
         if (rb != null)
             rb.gravityScale = 1f;
 
+        // Hide the health bar
+        if (healthBar != null)
+            healthBar.gameObject.SetActive(false);
+
+        // Destroy after 3 seconds if not trashed
+        StartCoroutine(DestroyAfterDelay());
+
         Debug.Log(name + " Defused");
+    }
+
+    private System.Collections.IEnumerator DestroyAfterDelay()
+    {
+        yield return new WaitForSeconds(3f);
+
+        if (this != null)
+            Destroy(gameObject);
     }
 
     public void Explode(bool damagePlayer = true)
     {
+        if (GameOverUI.GameEnded)
+            return;
+            
         if (damagePlayer)
         {
             PlayerHealth.Instance.TakeDamage(damage);
         }
-
+        audioManager.playEnemyDieSFX();
         Destroy(gameObject);
     }
 }

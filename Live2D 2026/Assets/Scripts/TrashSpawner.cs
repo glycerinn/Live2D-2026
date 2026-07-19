@@ -7,8 +7,8 @@ public class TrashSpawner : MonoBehaviour
     public float gameDuration = 300f;
 
     [Header("Trash")]
-    public GameObject trashPrefab;
-    public float spawnRate = 10f;
+    public GameObject[] trashPrefabs;
+    public float spawnRate = 2f;
 
     [Header("Spawn Point")]
     public Transform spawnPoint;
@@ -38,6 +38,11 @@ public class TrashSpawner : MonoBehaviour
 
     void SpawnTrash()
     {
-       Instantiate(trashPrefab, spawnPoint.position, Quaternion.identity);
+        if (trashPrefabs.Length == 0)
+            return;
+
+        GameObject prefab = trashPrefabs[Random.Range(0, trashPrefabs.Length)];
+
+        Instantiate(prefab, spawnPoint.position, Quaternion.identity);
     }
 }

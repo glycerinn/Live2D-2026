@@ -11,9 +11,11 @@ public class PlayerHealth : MonoBehaviour
 
     [Header("UI")]
     public Slider healthSlider;
+    private AudioManager audioManager;
 
     private void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         Instance = this;
     }
 
@@ -29,7 +31,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= amount;
         currentHealth = Mathf.Max(currentHealth, 0);
-
+        audioManager.playHurtSFX();
         UpdateHealthUI();
 
         if (currentHealth <= 0)

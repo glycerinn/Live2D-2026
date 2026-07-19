@@ -86,7 +86,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 4878899951112630115, guid: e2555196d3fdbeb4bb29f63650beeb2a, type: 3}
+  m_Sprite: {fileID: 5176376888374053770, guid: 4c9dac5eb6edd714e98d393f5b2b4ba0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,6 +136,8 @@ MonoBehaviour:
   maxHP: 1
   countdown: 10
   damage: 1
+  healthBar: {fileID: 0}
+  defusedSprite: {fileID: 0}
 --- !u!50 &8316207066366233057
 Rigidbody2D:
   serializedVersion: 5
@@ -201,7 +203,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.91333336, y: 2.0133333}
+    oldSize: {x: 1.37, y: 3.02}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

@@ -84,8 +84,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.22850268, g: 0.6792453, b: 0, a: 1}
+  m_Sprite: {fileID: -8250607377477875373, guid: 30fbee3da21e8184aa7d1620e3f2cc80, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -106,6 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e630a2f4d0496347883e335405da3c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trash
+  lifeTime: 5
+  damage: 1
 --- !u!50 &7600939980629754825
 Rigidbody2D:
   serializedVersion: 5
@@ -167,5 +169,5 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.14474672}
-  m_Radius: 0.4300839
+  m_Offset: {x: 0, y: 0.016840596}
+  m_Radius: 0.43008387

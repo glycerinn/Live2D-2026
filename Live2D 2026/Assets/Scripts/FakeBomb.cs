@@ -7,13 +7,17 @@ public class FakeBomb : MonoBehaviour, IBombInteraction
 
     [Header("Sprites")]
     public Sprite activatedSprite;
-
+    private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private bool activated;
 
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+
+        if (rb != null)
+            rb.gravityScale = 0f;
     }
 
     public void Interact(Bomb bomb)
@@ -23,23 +27,20 @@ public class FakeBomb : MonoBehaviour, IBombInteraction
 
         activated = true;
 
-        // Change sprite once
+        bomb.StopCountdown();
+
         if (activatedSprite != null)
             spriteRenderer.sprite = activatedSprite;
+
+        if (rb != null)
+            rb.gravityScale = 1f;
 
         StartCoroutine(Countdown());
     }
 
     IEnumerator Countdown()
     {
-        Debug.Log("3");
-        yield return new WaitForSeconds(1);
-
-        Debug.Log("2");
-        yield return new WaitForSeconds(1);
-
-        Debug.Log("1");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
 
         PlayerHealth.Instance.TakeDamage(fakeBombDamage);
 

@@ -10,17 +10,17 @@ public class MainMenu : MonoBehaviour
     private bool isLoading = false;
     public GameObject CreditsPanel;
 
-    // private AudioManager audioManager;
+    private AudioManager audioManager;
 
-    // public void Awake()
-    // {
-    //     audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
-    // }
+    public void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+    }
 
-    // void Start()
-    // {
-    //     audioManager.playMainMenuBGM();
-    // }
+    void Start()
+    {
+        audioManager.playMainMenuBGM();
+    }
 
     void Update()
     {
@@ -45,19 +45,19 @@ public class MainMenu : MonoBehaviour
             return;
 
             isLoading = true;
-            // audioManager.playLoginSFX();
-            SceneManager.LoadScene(nextSceneIndex);
+            audioManager.playClickSFX();
+            StartCoroutine(LoadNextLevel());
         }
     }
 
-    // IEnumerator LoadNextLevel()
-    // {
-    //     yield return StartCoroutine(Transition.Instance.PlayTransition());
+    IEnumerator LoadNextLevel()
+    {
+        yield return StartCoroutine(Transition.Instance.PlayTransition());
 
-    //     SceneManager.LoadScene(nextSceneIndex);
+        SceneManager.LoadScene(nextSceneIndex);
 
-    //     yield return StartCoroutine(Transition.Instance.EndTransition());
-    // }
+        yield return StartCoroutine(Transition.Instance.EndTransition());
+    }
 
     void QuitGame()
     {

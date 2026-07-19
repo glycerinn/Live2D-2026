@@ -8,6 +8,12 @@ public class Trash : MonoBehaviour
 
     private bool isDragging;
     private Vector3 offset;
+    private AudioManager audioManager;
+
+    public void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+    }
 
     void Update()
     {
@@ -46,6 +52,7 @@ public class Trash : MonoBehaviour
 
     void Explode()
     {
+        audioManager.playEnemyDieSFX();
         if (PlayerHealth.Instance != null)
         {
             PlayerHealth.Instance.TakeDamage(damage);

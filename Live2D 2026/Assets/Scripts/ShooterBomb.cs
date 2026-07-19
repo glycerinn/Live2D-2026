@@ -7,11 +7,12 @@ public class ShooterBomb : MonoBehaviour
     private Bomb bomb;
 
     public float fireRate = 1f;
-
+    private AudioManager audioManager;
     private float timer;
 
     void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         bomb = GetComponent<Bomb>();
     }
 
@@ -38,6 +39,7 @@ public class ShooterBomb : MonoBehaviour
 
     void Shoot(Vector2 dir)
     {
+        audioManager.playEnemyShootSFX();
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
 
         bullet.GetComponent<Bullet>().SetDirection(dir);
