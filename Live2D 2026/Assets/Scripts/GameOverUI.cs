@@ -12,6 +12,12 @@ public class GameOverUI : MonoBehaviour
     public GameObject panel;
     public Image resultImage;
 
+    [Header("Scenes")]
+    public string mainMenuScene = "Main Menu";
+    public string winCutsceneScene = "Cutscene2";
+
+    private bool playerWon;
+
     public Sprite winSprite;
     public Sprite loseSprite;
     private AudioManager audioManager;
@@ -29,10 +35,11 @@ public class GameOverUI : MonoBehaviour
     public void ShowResult(bool win)
     {
         if (GameEnded)
-        return;
+            return;
 
         GameEnded = true;
-        Debug.Log("ShowResult called");
+        playerWon = win;
+
         panel.SetActive(true);
         audioManager.playGameOverBGM();
         resultImage.sprite = win ? winSprite : loseSprite;
@@ -57,6 +64,7 @@ public class GameOverUI : MonoBehaviour
     public void MainMenu()
     {
         Time.timeScale = 1f;
+
         if (isLoading)
             return;
 
@@ -70,7 +78,10 @@ public class GameOverUI : MonoBehaviour
     {
         yield return StartCoroutine(Transition.Instance.PlayTransition());
 
-        SceneManager.LoadScene("Main Menu");
+        if (playerWon)
+            SceneManager.LoadScene(winCutsceneScene);
+        else
+            SceneManager.LoadScene(mainMenuScene);
 
         yield return StartCoroutine(Transition.Instance.EndTransition());
     }

@@ -240,6 +240,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameOverUI
   panel: {fileID: 1446261207}
   resultImage: {fileID: 1446261209}
+  mainMenuScene: Main Menu
+  winCutsceneScene: Cutscene2
   winSprite: {fileID: 2437342590955809935, guid: 8476b4d7c54dd434084f9a5ccfcde44a, type: 3}
   loseSprite: {fileID: -224996205324165296, guid: ef5939661db68a04ca6152f8c2571e2d, type: 3}
   trashCounterText: {fileID: 1439436314}
@@ -539,7 +541,7 @@ MonoBehaviour:
     timer: 0
   - prefab: {fileID: 9209047108963517827, guid: fce5feada76ad5c4b9b50ab65732a7da, type: 3}
     spawnRate: 2
-    unlockMinute: 0
+    unlockMinute: 150
     timer: 0
   minSpawnPosition: {x: -8, y: 3}
   maxSpawnPosition: {x: 8, y: -3}
