@@ -54,7 +54,7 @@ public class MainMenu : MonoBehaviour
     {
         yield return StartCoroutine(Transition.Instance.PlayTransition());
 
-        SceneManager.LoadScene(nextSceneIndex);
+        SceneManager.LoadScene("Cutscene");
 
         yield return StartCoroutine(Transition.Instance.EndTransition());
     }
