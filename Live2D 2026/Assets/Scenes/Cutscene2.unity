@@ -361,9 +361,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 90335369}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ec5475ae3d71b046a3843f7d92bbf28, type: 3}
+  m_Script: {fileID: 11500000, guid: b590ccf69466dac4ebfbcdf908909d59, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VideoPlayerScript
+  m_EditorClassIdentifier: Assembly-CSharp::VideoPlayerScript1
   videoPlayer: {fileID: 1522697642}
   SkipButton: {fileID: 1543078063}
 --- !u!1 &223518066
@@ -540,7 +540,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522697641}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 8cbab677d33872b46a5c557efaa83f1b, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 07eba62bfb655d84d99100379234282f, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -667,7 +667,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 90335374}
-        m_TargetAssemblyTypeName: VideoPlayerScript, Assembly-CSharp
+        m_TargetAssemblyTypeName: VideoPlayerScript1, Assembly-CSharp
         m_MethodName: SkipVideo
         m_Mode: 1
         m_Arguments:

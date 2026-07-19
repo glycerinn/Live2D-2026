@@ -24,6 +24,7 @@ public class Bomb : MonoBehaviour
     private BombSpawner spawner;
     private AudioManager audioManager;
     private bool countdownPaused;
+
     [Header("Timer")]
     public bool damagePlayerOnTimeout = true;
 
@@ -122,7 +123,7 @@ public class Bomb : MonoBehaviour
 
     private System.Collections.IEnumerator DestroyAfterDelay()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
 
         if (this != null)
             Destroy(gameObject);

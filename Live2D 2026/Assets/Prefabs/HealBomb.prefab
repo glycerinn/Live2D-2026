@@ -138,6 +138,7 @@ MonoBehaviour:
   damage: 1
   healthBar: {fileID: 0}
   defusedSprite: {fileID: 0}
+  defuselifetime: 1
   damagePlayerOnTimeout: 0
 --- !u!50 &8316207066366233057
 Rigidbody2D:
