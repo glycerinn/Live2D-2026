@@ -6,16 +6,17 @@ public class TrashBin : MonoBehaviour
     {
         Bomb bomb = other.GetComponent<Bomb>();
 
-        if (bomb == null)
+        if (bomb != null && bomb.IsDefused)
         {
+            Destroy(other.gameObject);
             return;
         }
 
-        if (!bomb.IsDefused)
-        {
-            return;
-        }
+        Trash trash = other.GetComponent<Trash>();
 
-        Destroy(other.gameObject);
+        if (trash != null)
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

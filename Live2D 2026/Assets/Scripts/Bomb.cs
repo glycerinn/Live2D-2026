@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Bomb : MonoBehaviour
 {
@@ -7,11 +8,39 @@ public class Bomb : MonoBehaviour
     public float countdown = 10f;
     public int damage = 1;
 
+    [Header("UI")]
+    public Slider healthBar;
+
+    [Header("Sprites")]
+    public Sprite defusedSprite;
+
+    private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb;
+
     public int CurrentHP { get; private set; }
     public bool IsDefused { get; private set; }
 
     private IBombInteraction interaction;
     private BombSpawner spawner;
+
+    void Awake()
+    {
+        CurrentHP = maxHP;
+        interaction = GetComponent<IBombInteraction>();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+
+        // Start floating
+        if (rb != null)
+            rb.gravityScale = 0f;
+
+        if (healthBar != null)
+        {
+            healthBar.maxValue = maxHP;
+            healthBar.value = CurrentHP;
+        }
+    }
 
     void Start()
     {
@@ -22,12 +51,6 @@ public class Bomb : MonoBehaviour
     {
         if (spawner != null)
             spawner.BombRemoved(this);
-    }
-
-    void Awake()
-    {
-        CurrentHP = maxHP;
-        interaction = GetComponent<IBombInteraction>();
     }
 
     void Update()
@@ -43,11 +66,6 @@ public class Bomb : MonoBehaviour
         }
     }
 
-    protected virtual void OnTimerExpired()
-    {
-        Explode(true);
-    }
-
     void OnMouseDown()
     {
         interaction?.Interact(this);
@@ -60,6 +78,9 @@ public class Bomb : MonoBehaviour
 
         CurrentHP -= amount;
 
+        if (healthBar != null)
+            healthBar.value = CurrentHP;
+
         if (CurrentHP <= 0)
         {
             Defuse();
@@ -69,6 +90,14 @@ public class Bomb : MonoBehaviour
     public void Defuse()
     {
         IsDefused = true;
+        
+        // Change sprite
+        if (spriteRenderer != null && defusedSprite != null)
+            spriteRenderer.sprite = defusedSprite;
+
+        // Let it fall
+        if (rb != null)
+            rb.gravityScale = 1f;
 
         Debug.Log(name + " Defused");
     }
@@ -77,10 +106,9 @@ public class Bomb : MonoBehaviour
     {
         if (damagePlayer)
         {
-            // Damage player
+            PlayerHealth.Instance.TakeDamage(damage);
         }
 
-        // Explosion effect
         Destroy(gameObject);
     }
 }
