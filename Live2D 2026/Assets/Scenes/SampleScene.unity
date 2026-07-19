@@ -525,19 +525,19 @@ MonoBehaviour:
     timer: 0
   - prefab: {fileID: 7438537499356402707, guid: 47afbc0db99f7c74b95b075451221fda, type: 3}
     spawnRate: 2
-    unlockMinute: 30
+    unlockMinute: 50
     timer: 0
   - prefab: {fileID: 4562625705494663015, guid: 44a8969be4ef60d499e3a87f8fe923fb, type: 3}
     spawnRate: 2
-    unlockMinute: 60
+    unlockMinute: 80
     timer: 0
   - prefab: {fileID: 2650149157332532394, guid: 7b0903ca2cefb0e4d8462b0f591af357, type: 3}
     spawnRate: 4
-    unlockMinute: 180
+    unlockMinute: 200
     timer: 0
   - prefab: {fileID: 4291054202566466014, guid: 944f9d1d36dc7724284401ec6074ee8f, type: 3}
     spawnRate: 3
-    unlockMinute: 120
+    unlockMinute: 170
     timer: 0
   - prefab: {fileID: 9209047108963517827, guid: fce5feada76ad5c4b9b50ab65732a7da, type: 3}
     spawnRate: 2
