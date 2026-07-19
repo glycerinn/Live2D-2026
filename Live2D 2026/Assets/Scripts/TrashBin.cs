@@ -16,6 +16,7 @@ public class TrashBin : MonoBehaviour
 
         if (trash != null)
         {
+            GameStats.Instance.AddTrash();
             Destroy(other.gameObject);
         }
     }

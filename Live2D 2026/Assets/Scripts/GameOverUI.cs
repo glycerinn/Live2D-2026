@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameOverUI : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class GameOverUI : MonoBehaviour
     public Sprite loseSprite;
     private AudioManager audioManager;
     private bool isLoading = false;
+    public TMP_Text trashCounterText;
 
     private void Awake()
     {
@@ -34,6 +36,8 @@ public class GameOverUI : MonoBehaviour
         panel.SetActive(true);
         audioManager.playGameOverBGM();
         resultImage.sprite = win ? winSprite : loseSprite;
+
+        trashCounterText.text = $"{GameStats.Instance.trashThrown}";
 
         Time.timeScale = 0f;
     }
