@@ -3,7 +3,18 @@ using System.Collections;
 
 public class FakeBomb : MonoBehaviour, IBombInteraction
 {
-    bool activated;
+    public int fakeBombDamage = 99;
+
+    [Header("Sprites")]
+    public Sprite activatedSprite;
+
+    private SpriteRenderer spriteRenderer;
+    private bool activated;
+
+    void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     public void Interact(Bomb bomb)
     {
@@ -12,25 +23,26 @@ public class FakeBomb : MonoBehaviour, IBombInteraction
 
         activated = true;
 
+        // Change sprite once
+        if (activatedSprite != null)
+            spriteRenderer.sprite = activatedSprite;
+
         StartCoroutine(Countdown());
     }
 
     IEnumerator Countdown()
     {
         Debug.Log("3");
-
         yield return new WaitForSeconds(1);
 
         Debug.Log("2");
-
         yield return new WaitForSeconds(1);
 
         Debug.Log("1");
-
         yield return new WaitForSeconds(1);
 
-        Debug.Log("Game Over");
+        PlayerHealth.Instance.TakeDamage(fakeBombDamage);
 
-        // Kill player
+        Destroy(gameObject);
     }
 }

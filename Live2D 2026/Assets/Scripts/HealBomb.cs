@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HealBomb : MonoBehaviour, IBombInteraction
 {
-    public int healAmount = 20;
+    public int healAmount = 1;
 
     public void Interact(Bomb bomb)
     {

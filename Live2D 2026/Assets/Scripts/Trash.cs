@@ -2,8 +2,22 @@ using UnityEngine;
 
 public class Trash : MonoBehaviour
 {
+    [Header("Stats")]
+    public float lifeTime = 5f;
+    public int damage = 1;
+
     private bool isDragging;
     private Vector3 offset;
+
+    void Update()
+    {
+        lifeTime -= Time.deltaTime;
+
+        if (lifeTime <= 0f)
+        {
+            Explode();
+        }
+    }
 
     void OnMouseDown()
     {
@@ -28,5 +42,15 @@ public class Trash : MonoBehaviour
     void OnMouseUp()
     {
         isDragging = false;
+    }
+
+    void Explode()
+    {
+        if (PlayerHealth.Instance != null)
+        {
+            PlayerHealth.Instance.TakeDamage(damage);
+        }
+
+        Destroy(gameObject);
     }
 }
